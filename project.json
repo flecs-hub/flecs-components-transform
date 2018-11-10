@@ -1,0 +1,8 @@
+{
+    "id":"reflecs.components.transform",
+    "type":"package",
+    "value": {
+        "managed": false,
+        "use": ["reflecs"]
+    }
+}
