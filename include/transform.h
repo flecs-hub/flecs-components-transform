@@ -44,7 +44,7 @@ typedef EcsVector3D EcsRotation3D;
 
 typedef EcsVector4D EcsQuaternion;
 
-typedef struct EcsComponentTransformHandles {
+typedef struct EcsComponentsTransformHandles {
     EcsHandle Position2D;
     EcsHandle Position3D;
     EcsHandle Scale2D;
@@ -52,7 +52,7 @@ typedef struct EcsComponentTransformHandles {
     EcsHandle Rotation2D;
     EcsHandle Rotation3D;
     EcsHandle Quaternion;
-} EcsComponentTransformHandles;
+} EcsComponentsTransformHandles;
 
 void EcsComponentsTransform(
     EcsWorld *world,

@@ -8,8 +8,8 @@ void EcsComponentsTransform(
 {
     bool do_2d = !flags || flags & ECS_2D;
     bool do_3d = !flags || flags & ECS_3D;
-    EcsComponentTransformHandles *handles = handles_out;
-    memset(handles, 0, sizeof(EcsComponentTransformHandles));
+    EcsComponentsTransformHandles *handles = handles_out;
+    memset(handles, 0, sizeof(EcsComponentsTransformHandles));
 
     if (do_2d) {
         ECS_COMPONENT(world, EcsPosition2D);
