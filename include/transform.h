@@ -7,9 +7,6 @@
 extern "C" {
 #endif
 
-#define ECS_2D (1)
-#define ECS_3D (2)
-
 typedef struct EcsVector2D {
     float x;
     float y;
@@ -37,7 +34,7 @@ typedef EcsVector2D EcsScale2D;
 typedef EcsVector3D EcsScale3D;
 
 typedef struct EcsRotation2D {
-    float value;
+    float angle;
 } EcsRotation2D;
 
 typedef EcsVector3D EcsRotation3D;
@@ -58,6 +55,19 @@ void EcsComponentsTransform(
     EcsWorld *world,
     int flags,
     void *handles_out);
+
+#define DeclareHandle(handles, component)\
+    EcsHandle Ecs##component##_h = handles.component; (void)Ecs##component##_h
+
+#define EcsComponentsTransform_DeclareHandles(handles)\
+    EcsDeclareHandle(handles, Position2D);\
+    EcsDeclareHandle(handles, Position3D);\
+    EcsDeclareHandle(handles, Scale2D);\
+    EcsDeclareHandle(handles, Scale3D);\
+    EcsDeclareHandle(handles, Rotation2D);\
+    EcsDeclareHandle(handles, Rotation3D);
+
+#undef DeclareHandle
 
 #ifdef __cplusplus
 }
