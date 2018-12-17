@@ -2,28 +2,12 @@
 #define REFLECS_COMPONENTS_TRANSFORM_H
 
 #include <reflecs/reflecs.h>
+#include <reflecs/components/transform/vectors.h>
+#include <reflecs/components/transform/matrix.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-typedef struct EcsVector2D {
-    float x;
-    float y;
-} EcsVector2D;
-
-typedef struct EcsVector3D {
-    float x;
-    float y;
-    float z;
-} EcsVector3D;
-
-typedef struct EcsVector4D {
-    float w;
-    float x;
-    float y;
-    float z;
-} EcsVector4D;
 
 typedef EcsVector2D EcsPosition2D;
 
