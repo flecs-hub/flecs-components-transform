@@ -1,9 +1,9 @@
 #ifndef REFLECS_COMPONENTS_TRANSFORM_H
 #define REFLECS_COMPONENTS_TRANSFORM_H
 
-#include <reflecs/reflecs.h>
-#include <reflecs/components/transform/vectors.h>
-#include <reflecs/components/transform/matrix.h>
+#include "prebaked.h"
+#include "vectors.h"
+#include "matrix.h"
 
 #ifdef __cplusplus
 extern "C" {
