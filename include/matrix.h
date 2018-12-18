@@ -1,9 +1,6 @@
 #ifndef REFLECS_COMPONENTS_MATRIX_H
 #define REFLECS_COMPONENTS_MATRIX_H
 
-#include <reflecs/reflecs.h>
-#include <reflecs/components/transform/vectors.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif

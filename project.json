@@ -3,5 +3,8 @@
     "type":"package",
     "value": {
         "use": ["reflecs"]
+    },
+    "lang.c": {
+        "lib": ["m"]
     }
 }

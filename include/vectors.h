@@ -1,8 +1,6 @@
 #ifndef REFLECS_COMPONENTS_VECTORS_H
 #define REFLECS_COMPONENTS_VECTORS_H
 
-#include <reflecs/reflecs.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
