@@ -76,9 +76,6 @@ float EcsVector3D_angle(EcsVector3D *vector_a, EcsVector3D *vector_b);
 float EcsVector3D_distance(EcsVector3D *vector_a, EcsVector3D *vector_b);
 float EcsVector3D_distanceSqrt(EcsVector3D *vector_a, EcsVector3D *vector_b);
 
-
-
-
 #undef DECLARE_METHODS
 
 #ifdef __cplusplus

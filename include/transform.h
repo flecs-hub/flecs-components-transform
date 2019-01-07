@@ -1,7 +1,7 @@
 #ifndef REFLECS_COMPONENTS_TRANSFORM_H
 #define REFLECS_COMPONENTS_TRANSFORM_H
 
-#include "prebaked.h"
+#include "bake_config.h"
 #include "vectors.h"
 #include "matrix.h"
 
