@@ -5,76 +5,187 @@
 extern "C" {
 #endif
 
-typedef struct EcsVector2D {
+typedef struct EcsVec2 {
     float x;
     float y;
-} EcsVector2D;
+} EcsVec2;
 
-typedef struct EcsVector2DInt {
+typedef struct EcsVec2Int {
     int x;
     int y;
-} EcsVector2DInt;
+} EcsVec2Int;
 
-typedef struct EcsVector3D {
+typedef struct EcsVec3 {
     float x;
     float y;
     float z;
-} EcsVector3D;
+} EcsVec3;
 
-typedef struct EcsVector3DInt {
+typedef struct EcsVec3Int {
     int x;
     int y;
     int z;
-} EcsVector3DInt;
+} EcsVec3Int;
 
-typedef struct EcsVector4D {
+typedef struct EcsVec4 {
     float w;
     float x;
     float y;
     float z;
-} EcsVector4D;
+} EcsVec4;
 
-typedef struct EcsVector4DInt {
+typedef struct EcsVec4Int {
     int w;
     int x;
     int y;
     int z;
-} EcsVector4DInt;
+} EcsVec4Int;
 
-void EcsVector2D_set(EcsVector2D *vector, float x, float y);
-void EcsVector2D_mult(EcsVector2D *vector, float m, EcsVector2D *vector_out);
-void EcsVector2D_div(EcsVector2D *vector, float m, EcsVector2D *vector_out);
-void EcsVector2D_add(EcsVector2D *vector_a, EcsVector2D *vector_b, EcsVector2D *vector_out);
-void EcsVector2D_sub(EcsVector2D *vector_a, EcsVector2D *vector_b, EcsVector2D *vector_out);
-void EcsVector2D_scale(EcsVector2D *vector_a, EcsVector2D *vector_b, EcsVector2D *vector_out);
-void EcsVector2D_normalize(EcsVector2D *vector, EcsVector2D *vector_out);
-void EcsVector2D_perpendicular(EcsVector2D *vector, EcsVector2D *vector_out);
-void EcsVector2D_reflect(EcsVector2D *vector_a, EcsVector2D *vector_b, EcsVector2D *vector_out);
-float EcsVector2D_cross(EcsVector2D *vector_a, EcsVector2D *vector_b);
-float EcsVector2D_dot(EcsVector2D *vector_a, EcsVector2D *vector_b);
-float EcsVector2D_magnitude(EcsVector2D *vector);
-float EcsVector2D_magnitudeSqrt(EcsVector2D *vector);
-float EcsVector2D_angle(EcsVector2D *vector);
-float EcsVector2D_angle2(EcsVector2D *vector_a, EcsVector2D *vector_b);
-float EcsVector2D_distance(EcsVector2D *vector_a, EcsVector2D *vector_b);
-float EcsVector2D_distanceSqrt(EcsVector2D *vector_a, EcsVector2D *vector_b);
 
-void EcsVector3D_set(EcsVector3D *vector, float x, float y, float z);
-void EcsVector3D_mult(EcsVector3D *vector, float m, EcsVector3D *vector_out);
-void EcsVector3D_div(EcsVector3D *vector, float m, EcsVector3D *vector_out);
-void EcsVector3D_add(EcsVector3D *vector_a, EcsVector3D *vector_b, EcsVector3D *vector_out);
-void EcsVector3D_sub(EcsVector3D *vector_a, EcsVector3D *vector_b, EcsVector3D *vector_out);
-void EcsVector3D_scale(EcsVector3D *vector_a, EcsVector3D *vector_b, EcsVector3D *vector_out);
-void EcsVector3D_normalize(EcsVector3D *vector, EcsVector3D *vector_out);
-void EcsVector3D_perpendicular(EcsVector3D *vector, EcsVector3D *vector_out);
-void EcsVector3D_reflect(EcsVector3D *vector_a, EcsVector3D *vector_b, EcsVector3D *vector_out);
-void EcsVector3D_cross(EcsVector3D *vector_a, EcsVector3D *vector_b, EcsVector3D *vector_out);
-float EcsVector3D_dot(EcsVector3D *vector_a, EcsVector3D *vector_b);
-float EcsVector3D_magnitude(EcsVector3D *vector);
-float EcsVector3D_magnitudeSqrt(EcsVector3D *vector);
-float EcsVector3D_angle(EcsVector3D *vector_a, EcsVector3D *vector_b);
-float EcsVector3D_distance(EcsVector3D *vector_a, EcsVector3D *vector_b);
-float EcsVector3D_distanceSqrt(EcsVector3D *vector_a, EcsVector3D *vector_b);
+/* -- 2D vectors -- */
+
+void ecs_vec2_set(
+    EcsVec2 *vector,
+    float x,
+    float y);
+
+void ecs_vec2_mult(
+    EcsVec2 *vector,
+    float m,
+    EcsVec2 *vector_out);
+
+void ecs_vec2_div(
+    EcsVec2 *vector,
+    float m, EcsVec2 *vector_out);
+
+void ecs_vec2_add(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b,
+    EcsVec2 *vector_out);
+
+void ecs_vec2_sub(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b,
+    EcsVec2 *vector_out);
+
+void ecs_vec2_scale(EcsVec2 *vector_a, EcsVec2 *vector_b,
+    EcsVec2 *vector_out);
+
+void ecs_vec2_normalize(
+    EcsVec2 *vector,
+    EcsVec2 *vector_out);
+
+void ecs_vec2_perpendicular(
+    EcsVec2 *vector,
+    EcsVec2 *vector_out);
+
+void ecs_vec2_reflect(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b,
+    EcsVec2 *vector_out);
+
+float ecs_vec2_cross(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b);
+
+float ecs_vec2_dot(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b);
+
+float ecs_vec2_magnitude(
+    EcsVec2 *vector);
+
+float ecs_vec2_magnitudeSqrt(
+    EcsVec2 *vector);
+
+float ecs_vec2_angle(
+    EcsVec2 *vector);
+
+float ecs_vec2_angle2(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b);
+
+float ecs_vec2_distance(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b);
+
+float ecs_vec2_distanceSqrt(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b);
+
+
+/* -- 3D vectors -- */
+
+void ecs_vec3_set(
+    EcsVec3 *vector,
+    float x,
+    float y,
+    float z);
+
+void ecs_vec3_mult(
+    EcsVec3 *vector,
+    float m,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_div(
+    EcsVec3 *vector,
+    float m,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_add(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_sub(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_scale(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_normalize(
+    EcsVec3 *vector,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_perpendicular(
+    EcsVec3 *vector,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_reflect(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out);
+
+void ecs_vec3_cross(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out);
+
+float ecs_vec3_dot(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b);
+
+float ecs_vec3_magnitude(
+    EcsVec3 *vector);
+
+float ecs_vec3_magnitudeSqrt(
+    EcsVec3 *vector);
+
+float ecs_vec3_angle(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b);
+
+float ecs_vec3_distance(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b);
+
+float ecs_vec3_distanceSqrt(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b);
 
 #undef DECLARE_METHODS
 

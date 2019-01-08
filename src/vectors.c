@@ -5,8 +5,8 @@
 /* *************************************************** *
  *  Vector 2D
  * *************************************************** */
-void EcsVector2D_set(
-    EcsVector2D *vector,
+void ecs_vec2_set(
+    EcsVec2 *vector,
     float x,
     float y)
 {
@@ -14,134 +14,134 @@ void EcsVector2D_set(
     vector->y = y;
 }
 
-void EcsVector2D_mult(
-    EcsVector2D *vector,
+void ecs_vec2_mult(
+    EcsVec2 *vector,
     float m,
-    EcsVector2D *vector_out)
+    EcsVec2 *vector_out)
 {
     vector_out->x = vector->x*m;
     vector_out->y = vector->y*m;
 }
 
-void EcsVector2D_div(
-    EcsVector2D *vector,
+void ecs_vec2_div(
+    EcsVec2 *vector,
     float m,
-    EcsVector2D *vector_out)
+    EcsVec2 *vector_out)
 {
     vector_out->x = vector->x / m;
     vector_out->y = vector->y / m;
 }
 
-void EcsVector2D_add(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b,
-    EcsVector2D *vector_out)
+void ecs_vec2_add(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b,
+    EcsVec2 *vector_out)
 {
     vector_out->x = vector_a->x + vector_b->x;
     vector_out->y = vector_a->y + vector_b->y;
 }
 
-void EcsVector2D_sub(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b,
-    EcsVector2D *vector_out)
+void ecs_vec2_sub(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b,
+    EcsVec2 *vector_out)
 {
     vector_out->x = vector_a->x - vector_b->x;
     vector_out->y = vector_a->y - vector_b->y;
 }
 
-void EcsVector2D_scale(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b,
-    EcsVector2D *vector_out)
+void ecs_vec2_scale(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b,
+    EcsVec2 *vector_out)
 {
     vector_out->x = vector_a->x * vector_b->x;
     vector_out->y = vector_a->y * vector_b->y;
 }
 
-void EcsVector2D_normalize(
-    EcsVector2D *vector,
-    EcsVector2D *vector_out)
+void ecs_vec2_normalize(
+    EcsVec2 *vector,
+    EcsVec2 *vector_out)
 {
-    float magnitude = EcsVector2D_magnitude(vector);
+    float magnitude = ecs_vec2_magnitude(vector);
     if (magnitude != 0) {
         vector_out->x = (vector->x/magnitude);
         vector_out->y = (vector->y/magnitude);
     } else {
-        memcpy(vector_out, vector, sizeof(EcsVector2D));
+        memcpy(vector_out, vector, sizeof(EcsVec2));
     }
 }
 
-void EcsVector2D_perpendicular(
-    EcsVector2D *vector,
-    EcsVector2D *vector_out)
+void ecs_vec2_perpendicular(
+    EcsVec2 *vector,
+    EcsVec2 *vector_out)
 {
     float x = vector->x;
     vector_out->x = -vector->y;
     vector_out->y = x;
 }
 
-void EcsVector2D_reflect(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b,
-    EcsVector2D *vector_out)
+void ecs_vec2_reflect(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b,
+    EcsVec2 *vector_out)
 {
-    EcsVector2D temp;
-    EcsVector2D_mult(vector_b, 2 * EcsVector2D_dot(vector_a, vector_b), &temp);
-    EcsVector2D_sub(vector_a, &temp, vector_out);
+    EcsVec2 temp;
+    ecs_vec2_mult(vector_b, 2 * ecs_vec2_dot(vector_a, vector_b), &temp);
+    ecs_vec2_sub(vector_a, &temp, vector_out);
 }
 
-float EcsVector2D_cross(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b)
+float ecs_vec2_cross(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b)
 {
     return vector_a->x*vector_b->y - vector_a->y*vector_b->x;
 }
 
-float EcsVector2D_dot(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b)
+float ecs_vec2_dot(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b)
 {
     return vector_a->x * vector_b->x + vector_a->y * vector_b->y;
 }
 
-float EcsVector2D_magnitude(
-    EcsVector2D *vector)
+float ecs_vec2_magnitude(
+    EcsVec2 *vector)
 {
-    return sqrtf(EcsVector2D_magnitudeSqrt(vector));
+    return sqrtf(ecs_vec2_magnitudeSqrt(vector));
 }
 
-float EcsVector2D_magnitudeSqrt(
-    EcsVector2D *vector)
+float ecs_vec2_magnitudeSqrt(
+    EcsVec2 *vector)
 {
-    return EcsVector2D_dot(vector, vector);
+    return ecs_vec2_dot(vector, vector);
 }
 
-float EcsVector2D_angle(
-    EcsVector2D *vector)
+float ecs_vec2_angle(
+    EcsVec2 *vector)
 {
     float angle = atan2f(vector->x, vector->y)*(180/M_PI);
     return angle < 0 ? angle + 360 : angle;
 }
 
-float EcsVector2D_angle2(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b)
+float ecs_vec2_angle2(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b)
 {
-    float angle = EcsVector2D_angle(vector_a) - EcsVector2D_angle(vector_b);
+    float angle = ecs_vec2_angle(vector_a) - ecs_vec2_angle(vector_b);
     return angle < 0 ? angle + 360 : angle;
 }
 
-float EcsVector2D_distance(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b)
+float ecs_vec2_distance(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b)
 {
-    return sqrtf(EcsVector2D_distanceSqrt(vector_a, vector_b));
+    return sqrtf(ecs_vec2_distanceSqrt(vector_a, vector_b));
 }
 
-float EcsVector2D_distanceSqrt(
-    EcsVector2D *vector_a,
-    EcsVector2D *vector_b)
+float ecs_vec2_distanceSqrt(
+    EcsVec2 *vector_a,
+    EcsVec2 *vector_b)
 {
     float x = vector_a->x - vector_b->x;
     float y = vector_a->y - vector_b->y;
@@ -157,8 +157,8 @@ float EcsVector2D_distanceSqrt(
 /* *************************************************** *
  *  Vector 3D
  * *************************************************** */
-void EcsVector3D_set(
-    EcsVector3D *vector,
+void ecs_vec3_set(
+    EcsVec3 *vector,
     float x,
     float y,
     float z)
@@ -168,84 +168,84 @@ void EcsVector3D_set(
     vector->z = z;
 }
 
-void EcsVector3D_mult(
-    EcsVector3D *vector,
+void ecs_vec3_mult(
+    EcsVec3 *vector,
     float m,
-    EcsVector3D *vector_out)
+    EcsVec3 *vector_out)
 {
     vector_out->x = vector->x*m;
     vector_out->y = vector->y*m;
     vector_out->z = vector->z*m;
 }
 
-void EcsVector3D_div(
-    EcsVector3D *vector,
+void ecs_vec3_div(
+    EcsVec3 *vector,
     float m,
-    EcsVector3D *vector_out)
+    EcsVec3 *vector_out)
 {
     vector_out->x = vector->x/m;
     vector_out->y = vector->y/m;
     vector_out->z = vector->z/m;
 }
 
-void EcsVector3D_add(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b,
-    EcsVector3D *vector_out)
+void ecs_vec3_add(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out)
 {
     vector_out->x = vector_a->x + vector_b->x;
     vector_out->y = vector_a->y + vector_b->y;
     vector_out->z = vector_a->z + vector_b->z;
 }
 
-void EcsVector3D_sub(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b,
-    EcsVector3D *vector_out)
+void ecs_vec3_sub(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out)
 {
     vector_out->x = vector_a->x - vector_b->x;
     vector_out->y = vector_a->y - vector_b->y;
     vector_out->z = vector_a->z - vector_b->z;
 }
 
-void EcsVector3D_scale(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b,
-    EcsVector3D *vector_out)
+void ecs_vec3_scale(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out)
 {
     vector_out->x = vector_a->x * vector_b->x;
     vector_out->y = vector_a->y * vector_b->y;
     vector_out->z = vector_a->z * vector_b->z;
 }
 
-void EcsVector3D_normalize(
-    EcsVector3D *vector,
-    EcsVector3D *vector_out)
+void ecs_vec3_normalize(
+    EcsVec3 *vector,
+    EcsVec3 *vector_out)
 {
-    float magnitude = EcsVector3D_magnitude(vector);
+    float magnitude = ecs_vec3_magnitude(vector);
     if (magnitude != 0) {
         vector_out->x = vector->x / magnitude;
         vector_out->y = vector->y / magnitude;
         vector_out->z = vector->z / magnitude;
     } else {
-        memcpy(vector_out, vector, sizeof(EcsVector3D));
+        memcpy(vector_out, vector, sizeof(EcsVec3));
     }
 }
 
-void EcsVector3D_reflect(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b,
-    EcsVector3D *vector_out)
+void ecs_vec3_reflect(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out)
 {
-    EcsVector3D temp;
-    EcsVector3D_mult(vector_b, 2 * EcsVector3D_dot(vector_a, vector_b), &temp);
-    EcsVector3D_sub(vector_a, &temp, vector_out);
+    EcsVec3 temp;
+    ecs_vec3_mult(vector_b, 2 * ecs_vec3_dot(vector_a, vector_b), &temp);
+    ecs_vec3_sub(vector_a, &temp, vector_out);
 }
 
-void EcsVector3D_cross(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b,
-    EcsVector3D *vector_out)
+void ecs_vec3_cross(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b,
+    EcsVec3 *vector_out)
 {
     float vector_a_x = vector_a->x;
     float vector_a_y = vector_b->y;
@@ -257,47 +257,47 @@ void EcsVector3D_cross(
     vector_out->z = (vector_a_x  * vector_b_y ) - (vector_a_y  * vector_b_x );
 }
 
-float EcsVector3D_dot(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b)
+float ecs_vec3_dot(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b)
 {
     return (vector_a->x * vector_b->x +
             vector_a->y * vector_b->y +
             vector_a->z * vector_b->z);
 }
 
-float EcsVector3D_magnitude(
-    EcsVector3D *vector)
+float ecs_vec3_magnitude(
+    EcsVec3 *vector)
 {
-    return sqrtf(EcsVector3D_magnitudeSqrt(vector));
+    return sqrtf(ecs_vec3_magnitudeSqrt(vector));
 }
 
-float EcsVector3D_magnitudeSqrt(
-    EcsVector3D *vector)
+float ecs_vec3_magnitudeSqrt(
+    EcsVec3 *vector)
 {
-    return EcsVector3D_dot(vector, vector);
+    return ecs_vec3_dot(vector, vector);
 }
 
-float EcsVector3D_angle(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b)
+float ecs_vec3_angle(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b)
 {
-    float dot = EcsVector3D_dot(vector_a, vector_b);
-    float m = sqrtf(EcsVector3D_magnitudeSqrt(vector_a) *
-                  EcsVector3D_magnitudeSqrt(vector_b));
+    float dot = ecs_vec3_dot(vector_a, vector_b);
+    float m = sqrtf(ecs_vec3_magnitudeSqrt(vector_a) *
+                  ecs_vec3_magnitudeSqrt(vector_b));
     return acos(dot/m);
 }
 
-float EcsVector3D_distance(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b)
+float ecs_vec3_distance(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b)
 {
-    return sqrtf(EcsVector3D_distanceSqrt(vector_a, vector_b));
+    return sqrtf(ecs_vec3_distanceSqrt(vector_a, vector_b));
 }
 
-float EcsVector3D_distanceSqrt(
-    EcsVector3D *vector_a,
-    EcsVector3D *vector_b)
+float ecs_vec3_distanceSqrt(
+    EcsVec3 *vector_a,
+    EcsVec3 *vector_b)
 {
     float x = vector_a->x - vector_b->x;
     float y = vector_a->y - vector_b->y;

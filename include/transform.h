@@ -9,21 +9,21 @@
 extern "C" {
 #endif
 
-typedef EcsVector2D EcsPosition2D;
+typedef EcsVec2 EcsPosition2D;
 
-typedef EcsVector3D EcsPosition3D;
+typedef EcsVec3 EcsPosition3D;
 
-typedef EcsVector2D EcsScale2D;
+typedef EcsVec2 EcsScale2D;
 
-typedef EcsVector3D EcsScale3D;
+typedef EcsVec3 EcsScale3D;
 
 typedef struct EcsRotation2D {
     float angle;
 } EcsRotation2D;
 
-typedef EcsVector3D EcsRotation3D;
+typedef EcsVec3 EcsRotation3D;
 
-typedef EcsVector4D EcsQuaternion;
+typedef EcsVec4 EcsQuaternion;
 
 typedef struct EcsComponentsTransformHandles {
     EcsHandle Position2D;
