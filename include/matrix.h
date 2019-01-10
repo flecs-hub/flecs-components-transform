@@ -9,7 +9,7 @@ typedef struct EcsMat3x3 {
     float data[3][3];
 } EcsMat3x3;
 
-#define ECS_MAT3X3_IDENTITY {{{1,0,0},{0,1,0},{0,0,0}}}
+#define ECS_MAT3X3_IDENTITY (EcsMat3x3){{{1,0,0},{0,1,0},{0,0,0}}}
 
 void ecs_mat3x3_add_rotation(
     EcsMat3x3 *matrix,
