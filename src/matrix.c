@@ -23,6 +23,14 @@ void ecs_mat3x3_add_translation(
     matrix->data[1][2] += translation->y;
 }
 
+void ecs_mat3x3_add_scale(
+    EcsMat3x3 *matrix,
+    EcsVec2 *scale)
+{
+    matrix->data[0][0] *= scale->x;
+    matrix->data[1][1] *= scale->y;
+}
+
 void ecs_mat3x3_transform(
     EcsMat3x3 *matrix,
     EcsVec2 *src,

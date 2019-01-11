@@ -19,6 +19,10 @@ void ecs_mat3x3_add_translation(
     EcsMat3x3 *matrix,
     EcsVec2 *translation);
 
+void ecs_mat3x3_add_scale(
+    EcsMat3x3 *matrix,
+    EcsVec2 *scale);
+
 void ecs_mat3x3_transform(
     EcsMat3x3 *matrix,
     EcsVec2 *src,
