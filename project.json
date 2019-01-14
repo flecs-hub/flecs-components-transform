@@ -2,6 +2,8 @@
     "id":"reflecs.components.transform",
     "type":"package",
     "value": {
+        "author": "Roberto Flores, Sander Mertens",
+        "description": "Transformation components and functions for reflecs",
         "use": ["reflecs"]
     },
     "lang.c": {
