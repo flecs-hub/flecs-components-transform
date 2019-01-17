@@ -19,6 +19,7 @@
 
 /* Headers of public dependencies */
 #include <reflecs>
+#include <reflecs.math>
 
 /* Headers of private dependencies */
 #ifdef REFLECS_COMPONENTS_TRANSFORM_IMPL

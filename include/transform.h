@@ -2,8 +2,6 @@
 #define REFLECS_COMPONENTS_TRANSFORM_H
 
 #include "bake_config.h"
-#include "vectors.h"
-#include "matrix.h"
 
 #ifndef M_PI
 #define M_PI	3.1415926535897932384626433832795
@@ -29,14 +27,19 @@ typedef EcsVec3 EcsRotation3D;
 
 typedef EcsVec4 EcsQuaternion;
 
+typedef EcsMat3x3 EcsMatTransform2D;
+
+typedef EcsMat3x3 EcsMatProject2D;
+
 typedef struct EcsComponentsTransformHandles {
-    EcsHandle Position2D;
-    EcsHandle Position3D;
-    EcsHandle Scale2D;
-    EcsHandle Scale3D;
-    EcsHandle Rotation2D;
-    EcsHandle Rotation3D;
-    EcsHandle Quaternion;
+    EcsEntity Position2D;
+    EcsEntity Position3D;
+    EcsEntity Scale2D;
+    EcsEntity Scale3D;
+    EcsEntity Rotation2D;
+    EcsEntity Rotation3D;
+    EcsEntity MatTransform2D;
+    EcsEntity MatProject2D;
 } EcsComponentsTransformHandles;
 
 void EcsComponentsTransform(
@@ -45,7 +48,7 @@ void EcsComponentsTransform(
     void *handles_out);
 
 #define DeclareHandle(handles, component)\
-    EcsHandle Ecs##component##_h = handles.component; (void)Ecs##component##_h
+    EcsEntity Ecs##component##_h = handles.component; (void)Ecs##component##_h
 
 #define EcsComponentsTransform_DeclareHandles(handles)\
     EcsDeclareHandle(handles, Position2D);\
@@ -53,7 +56,9 @@ void EcsComponentsTransform(
     EcsDeclareHandle(handles, Scale2D);\
     EcsDeclareHandle(handles, Scale3D);\
     EcsDeclareHandle(handles, Rotation2D);\
-    EcsDeclareHandle(handles, Rotation3D);
+    EcsDeclareHandle(handles, Rotation3D);\
+    EcsDeclareHandle(handles, MatTransform2D);\
+    EcsDeclareHandle(handles, MatProject2D);
 
 #undef DeclareHandle
 
