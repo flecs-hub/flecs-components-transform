@@ -1,4 +1,3 @@
-
-*.o
-*.so
+bin
+.bake_cache
 .DS_Store
