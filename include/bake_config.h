@@ -14,27 +14,27 @@
  * dependencies will automatically show up in this file. Include bake_config.h
  * in your main project file. Do not edit! */
 
-#ifndef REFLECS_COMPONENTS_TRANSFORM_BAKE_CONFIG_H
-#define REFLECS_COMPONENTS_TRANSFORM_BAKE_CONFIG_H
+#ifndef FLECS_COMPONENTS_TRANSFORM_BAKE_CONFIG_H
+#define FLECS_COMPONENTS_TRANSFORM_BAKE_CONFIG_H
 
 /* Headers of public dependencies */
-#include <reflecs>
-#include <reflecs.math>
+#include <flecs>
+#include <flecs.math>
 
 /* Headers of private dependencies */
-#ifdef REFLECS_COMPONENTS_TRANSFORM_IMPL
+#ifdef FLECS_COMPONENTS_TRANSFORM_IMPL
 /* No dependencies */
 #endif
 
 /* Convenience macro for exporting symbols */
-#if REFLECS_COMPONENTS_TRANSFORM_IMPL && defined _MSC_VER
-#define REFLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllexport)
-#elif REFLECS_COMPONENTS_TRANSFORM_IMPL
-#define REFLECS_COMPONENTS_TRANSFORM_EXPORT __attribute__((__visibility__("default")))
+#if FLECS_COMPONENTS_TRANSFORM_IMPL && defined _MSC_VER
+#define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllexport)
+#elif FLECS_COMPONENTS_TRANSFORM_IMPL
+#define FLECS_COMPONENTS_TRANSFORM_EXPORT __attribute__((__visibility__("default")))
 #elif defined _MSC_VER
-#define REFLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllimport)
+#define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllimport)
 #else
-#define REFLECS_COMPONENTS_TRANSFORM_EXPORT
+#define FLECS_COMPONENTS_TRANSFORM_EXPORT
 #endif
 
 #endif

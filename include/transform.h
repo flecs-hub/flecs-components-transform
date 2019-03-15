@@ -1,5 +1,5 @@
-#ifndef REFLECS_COMPONENTS_TRANSFORM_H
-#define REFLECS_COMPONENTS_TRANSFORM_H
+#ifndef FLECS_COMPONENTS_TRANSFORM_H
+#define FLECS_COMPONENTS_TRANSFORM_H
 
 #include "bake_config.h"
 
@@ -32,14 +32,14 @@ typedef EcsMat3x3 EcsMatTransform2D;
 typedef EcsMat3x3 EcsMatProject2D;
 
 typedef struct EcsComponentsTransformHandles {
-    EcsEntity Position2D;
-    EcsEntity Position3D;
-    EcsEntity Scale2D;
-    EcsEntity Scale3D;
-    EcsEntity Rotation2D;
-    EcsEntity Rotation3D;
-    EcsEntity MatTransform2D;
-    EcsEntity MatProject2D;
+    ECS_DECLARE_COMPONENT(EcsPosition2D);
+    ECS_DECLARE_COMPONENT(EcsPosition3D);
+    ECS_DECLARE_COMPONENT(EcsScale2D);
+    ECS_DECLARE_COMPONENT(EcsScale3D);
+    ECS_DECLARE_COMPONENT(EcsRotation2D);
+    ECS_DECLARE_COMPONENT(EcsRotation3D);
+    ECS_DECLARE_COMPONENT(EcsMatTransform2D);
+    ECS_DECLARE_COMPONENT(EcsMatProject2D);
 } EcsComponentsTransformHandles;
 
 void EcsComponentsTransform(
@@ -47,18 +47,15 @@ void EcsComponentsTransform(
     int flags,
     void *handles_out);
 
-#define DeclareHandle(handles, component)\
-    EcsEntity Ecs##component##_h = handles.component; (void)Ecs##component##_h
-
-#define EcsComponentsTransform_DeclareHandles(handles)\
-    EcsDeclareHandle(handles, Position2D);\
-    EcsDeclareHandle(handles, Position3D);\
-    EcsDeclareHandle(handles, Scale2D);\
-    EcsDeclareHandle(handles, Scale3D);\
-    EcsDeclareHandle(handles, Rotation2D);\
-    EcsDeclareHandle(handles, Rotation3D);\
-    EcsDeclareHandle(handles, MatTransform2D);\
-    EcsDeclareHandle(handles, MatProject2D);
+#define EcsComponentsTransform_ImportHandles(handles)\
+    ECS_IMPORT_COMPONENT(handles, EcsPosition2D);\
+    ECS_IMPORT_COMPONENT(handles, EcsPosition3D);\
+    ECS_IMPORT_COMPONENT(handles, EcsScale2D);\
+    ECS_IMPORT_COMPONENT(handles, EcsScale3D);\
+    ECS_IMPORT_COMPONENT(handles, EcsRotation2D);\
+    ECS_IMPORT_COMPONENT(handles, EcsRotation3D);\
+    ECS_IMPORT_COMPONENT(handles, EcsMatTransform2D);\
+    ECS_IMPORT_COMPONENT(handles, EcsMatProject2D);
 
 #undef DeclareHandle
 
