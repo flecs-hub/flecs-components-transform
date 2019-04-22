@@ -1,15 +1,14 @@
 #include <include/transform.h>
 #include <string.h>
 
-void EcsComponentsTransform(
+void FlecsComponentsTransformImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out)
+    int flags)
 {
     bool do_2d = !flags || flags & ECS_2D;
     bool do_3d = !flags || flags & ECS_3D;
-    EcsComponentsTransformHandles *handles = handles_out;
-    memset(handles, 0, sizeof(EcsComponentsTransformHandles));
+
+    ECS_MODULE(world, FlecsComponentsTransform);
 
     if (do_2d) {
         ECS_COMPONENT(world, EcsPosition2D);

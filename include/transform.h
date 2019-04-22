@@ -31,7 +31,7 @@ typedef EcsMat3x3 EcsMatTransform2D;
 
 typedef EcsMat3x3 EcsMatProject2D;
 
-typedef struct EcsComponentsTransformHandles {
+typedef struct FlecsComponentsTransform {
     ECS_DECLARE_COMPONENT(EcsPosition2D);
     ECS_DECLARE_COMPONENT(EcsPosition3D);
     ECS_DECLARE_COMPONENT(EcsScale2D);
@@ -40,14 +40,13 @@ typedef struct EcsComponentsTransformHandles {
     ECS_DECLARE_COMPONENT(EcsRotation3D);
     ECS_DECLARE_COMPONENT(EcsMatTransform2D);
     ECS_DECLARE_COMPONENT(EcsMatProject2D);
-} EcsComponentsTransformHandles;
+} FlecsComponentsTransform;
 
-void EcsComponentsTransform(
+void FlecsComponentsTransformImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out);
+    int flags);
 
-#define EcsComponentsTransform_ImportHandles(handles)\
+#define FlecsComponentsTransformImportHandles(handles)\
     ECS_IMPORT_COMPONENT(handles, EcsPosition2D);\
     ECS_IMPORT_COMPONENT(handles, EcsPosition3D);\
     ECS_IMPORT_COMPONENT(handles, EcsScale2D);\
