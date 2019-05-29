@@ -42,6 +42,7 @@ typedef struct FlecsComponentsTransform {
     ECS_DECLARE_COMPONENT(EcsMatProject2D);
 } FlecsComponentsTransform;
 
+FLECS_COMPONENTS_TRANSFORM_EXPORT
 void FlecsComponentsTransformImport(
     ecs_world_t *world,
     int flags);
