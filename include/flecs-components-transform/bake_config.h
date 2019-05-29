@@ -20,20 +20,18 @@
 /* Generated includes are specific to the bake environment. If a project is not
  * built with bake, it will have to provide alternative methods for including
  * its dependencies. */
-#ifdef __BAKE__
 /* Headers of public dependencies */
-#include <flecs>
-#include <flecs.math>
+#include <flecs.h>
+#include <flecs_math.h>
 
 /* Headers of private dependencies */
 #ifdef FLECS_COMPONENTS_TRANSFORM_IMPL
 /* No dependencies */
 #endif
-#endif
 
 /* Convenience macro for exporting symbols */
 #ifndef FLECS_COMPONENTS_TRANSFORM_STATIC
-  #if FLECS_COMPONENTS_TRANSFORM_IMPL && defined _MSC_VER
+  #if FLECS_COMPONENTS_TRANSFORM_IMPL && (defined(_MSC_VER) || defined(__MINGW32__))
     #define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllexport)
   #elif FLECS_COMPONENTS_TRANSFORM_IMPL
     #define FLECS_COMPONENTS_TRANSFORM_EXPORT __attribute__((__visibility__("default")))

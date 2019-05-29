@@ -1,4 +1,4 @@
-#include <include/transform.h>
+#include <flecs_components_transform.h>
 #include <string.h>
 
 void FlecsComponentsTransformImport(

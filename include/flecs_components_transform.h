@@ -1,7 +1,7 @@
 #ifndef FLECS_COMPONENTS_TRANSFORM_H
 #define FLECS_COMPONENTS_TRANSFORM_H
 
-#include "bake_config.h"
+#include <flecs-components-transform/bake_config.h>
 
 #ifndef M_PI
 #define M_PI	3.1415926535897932384626433832795
