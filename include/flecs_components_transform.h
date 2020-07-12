@@ -3,59 +3,85 @@
 
 #include <flecs-components-transform/bake_config.h>
 
-#ifndef M_PI
-#define M_PI	3.1415926535897932384626433832795
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef EcsVec2 EcsPosition2D;
+ECS_STRUCT(EcsPosition2, {
+    float x;
+    float y;
+});
 
-typedef EcsVec3 EcsPosition3D;
+ECS_STRUCT(EcsPosition3, {
+    float x;
+    float y;
+    float z;
+});
 
-typedef EcsVec2 EcsScale2D;
+ECS_STRUCT(EcsScale2, {
+    float x;
+    float y;
+});
 
-typedef EcsVec3 EcsScale3D;
+ECS_STRUCT(EcsScale3, {
+    float x;
+    float y;
+    float z;
+});
 
-typedef struct EcsRotation2D {
+ECS_STRUCT(EcsRotation2, {
     float angle;
-} EcsRotation2D;
+});
 
-typedef EcsVec3 EcsRotation3D;
+ECS_STRUCT(EcsRotation3, {
+    float x;
+    float y;
+    float z;
+});
 
-typedef EcsVec4 EcsQuaternion;
+ECS_STRUCT(EcsQuaternion, {
+    float x;
+    float y;
+    float z;
+    float w;
+});
 
-typedef EcsMat3x3 EcsMatTransform2D;
+typedef mat3 EcsTransform2;
+typedef mat4 EcsTransform3;
 
-typedef EcsMat3x3 EcsMatProject2D;
+typedef mat3 EcsProject2;
+typedef mat4 EcsProject3;
 
 typedef struct FlecsComponentsTransform {
-    ECS_DECLARE_COMPONENT(EcsPosition2D);
-    ECS_DECLARE_COMPONENT(EcsPosition3D);
-    ECS_DECLARE_COMPONENT(EcsScale2D);
-    ECS_DECLARE_COMPONENT(EcsScale3D);
-    ECS_DECLARE_COMPONENT(EcsRotation2D);
-    ECS_DECLARE_COMPONENT(EcsRotation3D);
-    ECS_DECLARE_COMPONENT(EcsMatTransform2D);
-    ECS_DECLARE_COMPONENT(EcsMatProject2D);
+    ECS_DECLARE_COMPONENT(EcsPosition2);
+    ECS_DECLARE_COMPONENT(EcsPosition3);
+    ECS_DECLARE_COMPONENT(EcsScale2);
+    ECS_DECLARE_COMPONENT(EcsScale3);
+    ECS_DECLARE_COMPONENT(EcsRotation2);
+    ECS_DECLARE_COMPONENT(EcsRotation3);
+    ECS_DECLARE_COMPONENT(EcsQuaternion);
+    ECS_DECLARE_COMPONENT(EcsTransform2);
+    ECS_DECLARE_COMPONENT(EcsTransform3);
+    ECS_DECLARE_COMPONENT(EcsProject2);
+    ECS_DECLARE_COMPONENT(EcsProject3);
 } FlecsComponentsTransform;
 
 FLECS_COMPONENTS_TRANSFORM_EXPORT
 void FlecsComponentsTransformImport(
-    ecs_world_t *world,
-    int flags);
+    ecs_world_t *world);
 
 #define FlecsComponentsTransformImportHandles(handles)\
-    ECS_IMPORT_COMPONENT(handles, EcsPosition2D);\
-    ECS_IMPORT_COMPONENT(handles, EcsPosition3D);\
-    ECS_IMPORT_COMPONENT(handles, EcsScale2D);\
-    ECS_IMPORT_COMPONENT(handles, EcsScale3D);\
-    ECS_IMPORT_COMPONENT(handles, EcsRotation2D);\
-    ECS_IMPORT_COMPONENT(handles, EcsRotation3D);\
-    ECS_IMPORT_COMPONENT(handles, EcsMatTransform2D);\
-    ECS_IMPORT_COMPONENT(handles, EcsMatProject2D);
+    ECS_IMPORT_COMPONENT(handles, EcsPosition2);\
+    ECS_IMPORT_COMPONENT(handles, EcsPosition3);\
+    ECS_IMPORT_COMPONENT(handles, EcsScale2);\
+    ECS_IMPORT_COMPONENT(handles, EcsScale3);\
+    ECS_IMPORT_COMPONENT(handles, EcsRotation2);\
+    ECS_IMPORT_COMPONENT(handles, EcsRotation3);\
+    ECS_IMPORT_COMPONENT(handles, EcsQuaternion);\
+    ECS_IMPORT_COMPONENT(handles, EcsTransform2);\
+    ECS_IMPORT_COMPONENT(handles, EcsTransform3);\
+    ECS_IMPORT_COMPONENT(handles, EcsProject2);\
+    ECS_IMPORT_COMPONENT(handles, EcsProject3);
 
 #undef DeclareHandle
 

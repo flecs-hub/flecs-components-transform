@@ -2,35 +2,36 @@
 #include <string.h>
 
 void FlecsComponentsTransformImport(
-    ecs_world_t *world,
-    int flags)
+    ecs_world_t *world)
 {
-    bool do_2d = !flags || flags & ECS_2D;
-    bool do_3d = !flags || flags & ECS_3D;
-
     ECS_MODULE(world, FlecsComponentsTransform);
 
-    if (do_2d) {
-        ECS_COMPONENT(world, EcsPosition2D);
-        ECS_COMPONENT(world, EcsScale2D);
-        ECS_COMPONENT(world, EcsRotation2D);
-        ECS_COMPONENT(world, EcsMatTransform2D);
-        ECS_COMPONENT(world, EcsMatProject2D);
+    ecs_set_name_prefix(world, "Ecs");
 
-        ECS_SET_COMPONENT(EcsPosition2D);
-        ECS_SET_COMPONENT(EcsScale2D);
-        ECS_SET_COMPONENT(EcsRotation2D);
-        ECS_SET_COMPONENT(EcsMatTransform2D);
-        ECS_SET_COMPONENT(EcsMatProject2D);
-    }
+    ECS_IMPORT(world, FlecsMeta);
 
-    if (do_3d) {
-        ECS_COMPONENT(world, EcsPosition3D);
-        ECS_COMPONENT(world, EcsScale3D);
-        ECS_COMPONENT(world, EcsRotation3D);
+    ECS_META(world, EcsPosition2);
+    ECS_META(world, EcsPosition3);
+    ECS_META(world, EcsScale2);
+    ECS_META(world, EcsScale3);
+    ECS_META(world, EcsRotation2);
+    ECS_META(world, EcsRotation3);
+    ECS_META(world, EcsQuaternion);
 
-        ECS_SET_COMPONENT(EcsPosition3D);
-        ECS_SET_COMPONENT(EcsScale3D);
-        ECS_SET_COMPONENT(EcsRotation3D);
-    }
+    ECS_COMPONENT(world, EcsTransform2);
+    ECS_COMPONENT(world, EcsTransform3);
+    ECS_COMPONENT(world, EcsProject2);
+    ECS_COMPONENT(world, EcsProject3);
+
+    ECS_EXPORT_COMPONENT(EcsPosition2);
+    ECS_EXPORT_COMPONENT(EcsPosition3);
+    ECS_EXPORT_COMPONENT(EcsScale2);
+    ECS_EXPORT_COMPONENT(EcsScale3);
+    ECS_EXPORT_COMPONENT(EcsRotation2);
+    ECS_EXPORT_COMPONENT(EcsRotation3);
+    ECS_EXPORT_COMPONENT(EcsQuaternion);
+    ECS_EXPORT_COMPONENT(EcsTransform2);
+    ECS_EXPORT_COMPONENT(EcsTransform3);
+    ECS_EXPORT_COMPONENT(EcsProject2);
+    ECS_EXPORT_COMPONENT(EcsProject3);
 }

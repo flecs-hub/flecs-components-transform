@@ -19,24 +19,20 @@
 
 /* Headers of public dependencies */
 #include <flecs.h>
-#include <flecs_math.h>
-
-/* Headers of private dependencies */
-#ifdef FLECS_COMPONENTS_TRANSFORM_IMPL
-/* No dependencies */
-#endif
+#include <flecs_meta.h>
+#include <cglm.h>
 
 /* Convenience macro for exporting symbols */
-#ifndef FLECS_COMPONENTS_TRANSFORM_STATIC
-  #if FLECS_COMPONENTS_TRANSFORM_IMPL && (defined(_MSC_VER) || defined(__MINGW32__))
-    #define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllexport)
-  #elif FLECS_COMPONENTS_TRANSFORM_IMPL
-    #define FLECS_COMPONENTS_TRANSFORM_EXPORT __attribute__((__visibility__("default")))
-  #elif defined _MSC_VER
-    #define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllimport)
-  #else
-    #define FLECS_COMPONENTS_TRANSFORM_EXPORT
-  #endif
+#ifndef flecs_components_transform_STATIC
+#if flecs_components_transform_EXPORTS && (defined(_MSC_VER) || defined(__MINGW32__))
+  #define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllexport)
+#elif flecs_components_transform_EXPORTS
+  #define FLECS_COMPONENTS_TRANSFORM_EXPORT __attribute__((__visibility__("default")))
+#elif defined _MSC_VER
+  #define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllimport)
+#else
+  #define FLECS_COMPONENTS_TRANSFORM_EXPORT
+#endif
 #else
   #define FLECS_COMPONENTS_TRANSFORM_EXPORT
 #endif

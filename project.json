@@ -1,12 +1,13 @@
 {
-    "id":"flecs.components.transform",
-    "type":"package",
+    "id": "flecs.components.transform",
+    "type": "package",
     "value": {
         "author": "Sander Mertens",
         "description": "Transformation components for flecs",
         "use": [
             "flecs",
-            "flecs.math"
+            "flecs.meta",
+            "cglm"
         ]
     }
 }
