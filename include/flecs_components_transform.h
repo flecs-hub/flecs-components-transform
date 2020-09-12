@@ -46,11 +46,21 @@ ECS_STRUCT(EcsQuaternion, {
     float w;
 });
 
-typedef mat3 EcsTransform2;
-typedef mat4 EcsTransform3;
+typedef struct EcsTransform2 {
+    mat3 value;
+} EcsTransform2;
 
-typedef mat3 EcsProject2;
-typedef mat4 EcsProject3;
+typedef struct EcsTransform3 {
+    mat4 value;
+} EcsTransform3;
+
+typedef struct EcsProject2 {
+    mat3 value;
+} EcsProject2;
+
+typedef struct EcsProject3 {
+    mat4 value;
+} EcsProject3;
 
 typedef struct FlecsComponentsTransform {
     ECS_DECLARE_COMPONENT(EcsPosition2);
@@ -83,10 +93,61 @@ void FlecsComponentsTransformImport(
     ECS_IMPORT_COMPONENT(handles, EcsProject2);\
     ECS_IMPORT_COMPONENT(handles, EcsProject3);
 
-#undef DeclareHandle
-
 #ifdef __cplusplus
 }
+#endif
+
+#ifdef __cplusplus
+
+namespace flecs {
+namespace components {
+
+class transform : FlecsComponentsTransform {
+public:
+    using Position2 = EcsPosition2;
+    using Position3 = EcsPosition3;
+
+    using Scale2 = EcsScale2;
+    using Scale3 = EcsScale3;
+
+    using Rotation2 = EcsRotation2;
+    using Rotation3 = EcsRotation3;
+
+    using Quaternion = EcsQuaternion;
+
+    using Transform2 = EcsTransform2;
+    using Transform3 = EcsTransform3;
+
+    using Project2 = EcsProject2;
+    using Project3 = EcsProject3;
+
+    transform(flecs::world& ecs) {
+        FlecsComponentsTransformImport(ecs.c_ptr());
+
+        ecs.module<flecs::components::transform>();
+
+        ecs.pod_component<Position2>("flecs::components::transform::Position2");
+        ecs.pod_component<Position3>("flecs::components::transform::Position3");
+
+        ecs.pod_component<Scale2>("flecs::components::transform::Scale2");
+        ecs.pod_component<Scale3>("flecs::components::transform::Scale3");
+
+        ecs.pod_component<Rotation2>("flecs::components::transform::Rotation2");
+        ecs.pod_component<Rotation3>("flecs::components::transform::Rotation3");
+
+        ecs.pod_component<Quaternion>("flecs::components::transform::Quaternion");
+
+        ecs.pod_component<Transform2>("flecs::components::transform::Transform2");
+        ecs.pod_component<Transform3>("flecs::components::transform::Transform3");
+
+        ecs.pod_component<Project2>("flecs::components::transform::Project2");
+        ecs.pod_component<Project3>("flecs::components::transform::Project3");
+    }
+};
+
+}
+}
+
 #endif
 
 #endif
