@@ -105,7 +105,20 @@ namespace components {
 class transform : FlecsComponentsTransform {
 public:
     using Position2 = EcsPosition2;
-    using Position3 = EcsPosition3;
+
+    struct Position3 : EcsPosition3 {
+        Position3() { }
+        
+        Position3(float x, float y, float z) {
+            this->x = x;
+            this->y = y;
+            this->z = z;
+        }
+
+        operator float*() {
+            return reinterpret_cast<float*>(this);
+        }
+    };
 
     using Scale2 = EcsScale2;
     using Scale3 = EcsScale3;
