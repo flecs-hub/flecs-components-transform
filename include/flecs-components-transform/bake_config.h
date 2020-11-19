@@ -25,16 +25,16 @@
 /* Convenience macro for exporting symbols */
 #ifndef flecs_components_transform_STATIC
 #if flecs_components_transform_EXPORTS && (defined(_MSC_VER) || defined(__MINGW32__))
-  #define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllexport)
+  #define FLECS_COMPONENTS_TRANSFORM_API __declspec(dllexport)
 #elif flecs_components_transform_EXPORTS
-  #define FLECS_COMPONENTS_TRANSFORM_EXPORT __attribute__((__visibility__("default")))
+  #define FLECS_COMPONENTS_TRANSFORM_API __attribute__((__visibility__("default")))
 #elif defined _MSC_VER
-  #define FLECS_COMPONENTS_TRANSFORM_EXPORT __declspec(dllimport)
+  #define FLECS_COMPONENTS_TRANSFORM_API __declspec(dllimport)
 #else
-  #define FLECS_COMPONENTS_TRANSFORM_EXPORT
+  #define FLECS_COMPONENTS_TRANSFORM_API
 #endif
 #else
-  #define FLECS_COMPONENTS_TRANSFORM_EXPORT
+  #define FLECS_COMPONENTS_TRANSFORM_API
 #endif
 
 #endif
