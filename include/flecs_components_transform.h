@@ -3,10 +3,6 @@
 
 #include <flecs-components-transform/bake_config.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 ECS_STRUCT(EcsPosition2, {
     float x;
     float y;
@@ -75,6 +71,10 @@ typedef struct FlecsComponentsTransform {
     ECS_DECLARE_COMPONENT(EcsProject2);
     ECS_DECLARE_COMPONENT(EcsProject3);
 } FlecsComponentsTransform;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 FLECS_COMPONENTS_TRANSFORM_API
 void FlecsComponentsTransformImport(
