@@ -3,6 +3,8 @@
 
 #include <flecs-components-transform/bake_config.h>
 
+#ifndef FLECS_LEGACY
+
 ECS_STRUCT(EcsPosition2, {
     float x;
     float y;
@@ -41,6 +43,8 @@ ECS_STRUCT(EcsQuaternion, {
     float z;
     float w;
 });
+
+#endif
 
 typedef struct EcsTransform2 {
     mat3 value;
