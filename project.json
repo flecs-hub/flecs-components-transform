@@ -6,8 +6,7 @@
         "description": "Transformation components for flecs",
         "use": [
             "flecs",
-            "flecs.meta",
-            "cglm"
+            "flecs.components.cglm"
         ]
     }
 }

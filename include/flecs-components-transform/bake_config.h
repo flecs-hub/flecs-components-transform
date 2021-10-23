@@ -19,8 +19,7 @@
 
 /* Headers of public dependencies */
 #include <flecs.h>
-#include <flecs_meta.h>
-#include <cglm.h>
+#include <flecs_components_cglm.h>
 
 /* Convenience macro for exporting symbols */
 #ifndef flecs_components_transform_STATIC

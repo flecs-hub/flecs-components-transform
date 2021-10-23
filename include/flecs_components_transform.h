@@ -3,6 +3,12 @@
 
 #include <flecs-components-transform/bake_config.h>
 
+// Reflection system boilerplate
+#undef ECS_META_IMPL
+#ifndef flecs_components_transform_EXPORTS
+#define ECS_META_IMPL EXTERN // Ensure meta symbols are only defined once
+#endif
+
 #ifndef FLECS_LEGACY
 
 ECS_STRUCT(EcsPosition2, {
@@ -62,20 +68,6 @@ typedef struct EcsProject3 {
     mat4 value;
 } EcsProject3;
 
-typedef struct FlecsComponentsTransform {
-    ECS_DECLARE_COMPONENT(EcsPosition2);
-    ECS_DECLARE_COMPONENT(EcsPosition3);
-    ECS_DECLARE_COMPONENT(EcsScale2);
-    ECS_DECLARE_COMPONENT(EcsScale3);
-    ECS_DECLARE_COMPONENT(EcsRotation2);
-    ECS_DECLARE_COMPONENT(EcsRotation3);
-    ECS_DECLARE_COMPONENT(EcsQuaternion);
-    ECS_DECLARE_COMPONENT(EcsTransform2);
-    ECS_DECLARE_COMPONENT(EcsTransform3);
-    ECS_DECLARE_COMPONENT(EcsProject2);
-    ECS_DECLARE_COMPONENT(EcsProject3);
-} FlecsComponentsTransform;
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -83,19 +75,6 @@ extern "C" {
 FLECS_COMPONENTS_TRANSFORM_API
 void FlecsComponentsTransformImport(
     ecs_world_t *world);
-
-#define FlecsComponentsTransformImportHandles(handles)\
-    ECS_IMPORT_COMPONENT(handles, EcsPosition2);\
-    ECS_IMPORT_COMPONENT(handles, EcsPosition3);\
-    ECS_IMPORT_COMPONENT(handles, EcsScale2);\
-    ECS_IMPORT_COMPONENT(handles, EcsScale3);\
-    ECS_IMPORT_COMPONENT(handles, EcsRotation2);\
-    ECS_IMPORT_COMPONENT(handles, EcsRotation3);\
-    ECS_IMPORT_COMPONENT(handles, EcsQuaternion);\
-    ECS_IMPORT_COMPONENT(handles, EcsTransform2);\
-    ECS_IMPORT_COMPONENT(handles, EcsTransform3);\
-    ECS_IMPORT_COMPONENT(handles, EcsProject2);\
-    ECS_IMPORT_COMPONENT(handles, EcsProject3);
 
 #ifdef __cplusplus
 }
@@ -140,33 +119,34 @@ public:
     using Project3 = EcsProject3;
 
     transform(flecs::world& ecs) {
-        FlecsComponentsTransformImport(ecs.c_ptr());
+        FlecsComponentsTransformImport(ecs);
 
         ecs.module<flecs::components::transform>();
 
-        ecs.pod_component<Position2>("flecs::components::transform::Position2");
-        ecs.pod_component<Position3>("flecs::components::transform::Position3");
+        ecs.component<Position2>("::flecs::components::transform::Position2");
+        ecs.component<EcsPosition3>();
+            .component<Position3>();
 
-        ecs.pod_component<Scale2>("flecs::components::transform::Scale2");
-        ecs.pod_component<Scale3>("flecs::components::transform::Scale3");
+        ecs.component<Scale2>("::flecs::components::transform::Scale2");
+        ecs.component<Scale3>("::flecs::components::transform::Scale3");
 
-        ecs.pod_component<Rotation2>("flecs::components::transform::Rotation2");
-        ecs.pod_component<Rotation3>("flecs::components::transform::Rotation3");
+        ecs.component<Rotation2>("::flecs::components::transform::Rotation2");
+        ecs.component<Rotation3>("::flecs::components::transform::Rotation3");
 
-        ecs.pod_component<Quaternion>("flecs::components::transform::Quaternion");
+        ecs.component<Quaternion>("::flecs::components::transform::Quaternion");
 
-        ecs.pod_component<Transform2>("flecs::components::transform::Transform2");
-        ecs.pod_component<Transform3>("flecs::components::transform::Transform3");
+        ecs.component<Transform2>("::flecs::components::transform::Transform2");
+        ecs.component<Transform3>("::flecs::components::transform::Transform3");
 
-        ecs.pod_component<Project2>("flecs::components::transform::Project2");
-        ecs.pod_component<Project3>("flecs::components::transform::Project3");
+        ecs.component<Project2>("::flecs::components::transform::Project2");
+        ecs.component<Project3>("::flecs::components::transform::Project3");
     }
 };
 
 }
 }
 
-#endif
-#endif
+#endif // FLECS_NO_CPP
+#endif // __cplusplus
 
-#endif
+#endif // FLECS_COMPONENTS_TRANSFORM_H
