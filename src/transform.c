@@ -1,5 +1,6 @@
+#define FLECS_COMPONENTS_TRANSFORM_IMPL
+
 #include <flecs_components_transform.h>
-#include <string.h>
 
 void FlecsComponentsTransformImport(
     ecs_world_t *world)

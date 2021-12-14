@@ -5,7 +5,7 @@
 
 // Reflection system boilerplate
 #undef ECS_META_IMPL
-#ifndef flecs_components_transform_EXPORTS
+#ifndef FLECS_COMPONENTS_TRANSFORM_IMPL
 #define ECS_META_IMPL EXTERN // Ensure meta symbols are only defined once
 #endif
 
