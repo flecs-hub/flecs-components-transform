@@ -93,7 +93,7 @@ void FlecsComponentsTransformImport(
 namespace flecs {
 namespace components {
 
-class transform : FlecsComponentsTransform {
+class transform {
 public:
     using Position2 = EcsPosition2;
 
@@ -126,27 +126,22 @@ public:
     using Project3 = EcsProject3;
 
     transform(flecs::world& ecs) {
+        // Load module contents
         FlecsComponentsTransformImport(ecs);
 
+        // Bind C++ types with module contents
         ecs.module<flecs::components::transform>();
-
-        ecs.component<Position2>("::flecs::components::transform::Position2");
-        ecs.component<EcsPosition3>();
-            .component<Position3>();
-
-        ecs.component<Scale2>("::flecs::components::transform::Scale2");
-        ecs.component<Scale3>("::flecs::components::transform::Scale3");
-
-        ecs.component<Rotation2>("::flecs::components::transform::Rotation2");
-        ecs.component<Rotation3>("::flecs::components::transform::Rotation3");
-
-        ecs.component<Quaternion>("::flecs::components::transform::Quaternion");
-
-        ecs.component<Transform2>("::flecs::components::transform::Transform2");
-        ecs.component<Transform3>("::flecs::components::transform::Transform3");
-
-        ecs.component<Project2>("::flecs::components::transform::Project2");
-        ecs.component<Project3>("::flecs::components::transform::Project3");
+        ecs.component<Position2>();
+        ecs.component<Position3>();
+        ecs.component<Scale2>();
+        ecs.component<Scale3>();
+        ecs.component<Rotation2>();
+        ecs.component<Rotation3>();
+        ecs.component<Quaternion>();
+        ecs.component<Transform2>();
+        ecs.component<Transform3>();
+        ecs.component<Project2>();
+        ecs.component<Project3>();
     }
 };
 
