@@ -11,6 +11,18 @@
 
 #ifndef FLECS_LEGACY
 
+// Don't automatically transform entity
+FLECS_COMPONENTS_TRANSFORM_API
+extern ECS_TAG_DECLARE(EcsTransformManually);
+
+// Entity should be transformed once
+FLECS_COMPONENTS_TRANSFORM_API
+extern ECS_TAG_DECLARE(EcsTransformOnce);
+
+// Added with TransformOnce, removed after entity is transformed
+FLECS_COMPONENTS_TRANSFORM_API
+extern ECS_TAG_DECLARE(EcsTransformNeeded);
+
 FLECS_COMPONENTS_TRANSFORM_API
 ECS_STRUCT(EcsPosition2, {
     float x;
@@ -123,6 +135,9 @@ public:
         }
     };
 
+    struct TransformManually { };
+    struct TransformOnce { };
+
     using Scale2 = EcsScale2;
     using Scale3 = EcsScale3;
 
@@ -154,6 +169,8 @@ public:
         ecs.component<Transform3>();
         ecs.component<Project2>();
         ecs.component<Project3>();
+        ecs.component<TransformManually>();
+        ecs.component<TransformOnce>();
     }
 };
 
